@@ -1,110 +1,93 @@
 import os
 import requests
 
-url_api = "https://www.rihappy.com.br/api/catalog_system/pub/products/search"
+API = "https://www.rihappy.com.br/api/catalog_system/pub/products/search"
 
-resposta = requests.get(
-url_api,
-params={"_from": 0, "_to": 0},
-headers={
+HEADERS = {
 "User-Agent": "Mozilla/5.0",
 "Accept": "application/json"
-},
-timeout=30
-)
+}
 
-print("Status API:", resposta.status_code)
-
-dados = resposta.json()
-
-if not dados:
-print("Nenhum produto encontrado.")
-exit()
-
+def buscar():
+r = requests.get(API, params={"_from": 0, "_to": 0}, headers=HEADERS, timeout=30)
+print("Status API:", r.status_code)
+r.raise_for_status()
+dados = r.json()
 produto = dados[0]
-
 nome = produto.get("productName", "Produto sem nome")
 link = produto.get("link", "")
-preco = None
 imagem = None
-
-for item in produto.get("items", []):
+preco = None
 
 ```
-if imagem is None:
-
+for item in produto.get("items", []):
     imagens = item.get("images", [])
-
     if imagens:
+        imagem = imagens[0].get("imageUrl") or imagens[0].get("imageText")
 
-        imagem = (
-            imagens[0].get("imageUrl")
-            or imagens[0].get("imageText")
-        )
+    sellers = item.get("sellers", [])
+    for seller in sellers:
+        oferta = seller.get("commertialOffer", {})
+        preco = oferta.get("Price")
+        if preco:
+            break
 
-for seller in item.get("sellers", []):
-
-    oferta = seller.get("commertialOffer", {})
-    valor = oferta.get("Price")
-
-    if valor:
-        preco = valor
+    if preco:
         break
 
-if preco:
-    break
+if link.startswith("/"):
+    link = "https://www.rihappy.com.br" + link
+
+return nome, link, preco, imagem
 ```
 
-if link.startswith("/"):
-link = "https://www.rihappy.com.br" + link
+def enviar(nome, link, preco, imagem):
+token = os.environ.get("TELEGRAM_BOT_TOKEN")
+chat_id = os.environ.get("TELEGRAM_CHAT_ID")
 
+```
 print("Produto:", nome)
 print("Preço:", preco)
 print("Imagem encontrada:", bool(imagem))
 print("Imagem:", imagem)
 
-token = os.environ.get("TELEGRAM_BOT_TOKEN")
-chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+if not token:
+    print("ERRO: token do Telegram não encontrado.")
+    return
 
-if not token or not chat_id:
-
-```
-print("ERRO: Telegram não configurado.")
-exit()
-```
+if not chat_id:
+    print("ERRO: chat ID do Telegram não encontrado.")
+    return
 
 if not imagem:
+    print("ERRO: imagem não encontrada.")
+    return
 
-```
-print("ERRO: produto sem imagem.")
-exit()
-```
+telegram = "https://api.telegram.org/bot" + token + "/sendPhoto"
 
-telegram_url = "https://api.telegram.org/bot" + token + "/sendPhoto"
+legenda = "TESTE DE IMAGEM - PANDILLA TOYS RADAR\n\n" + nome + "\n\nPreco: R$ " + str(preco) + "\n\n" + link
 
-legenda = (
-"TESTE DE IMAGEM - PANDILLA TOYS RADAR\n\n"
-+ nome
-+ "\n\nPreco: R$ "
-+ str(preco)
-+ "\n\n"
-+ link
+r = requests.post(
+    telegram,
+    data={
+        "chat_id": chat_id,
+        "photo": imagem,
+        "caption": legenda
+    },
+    timeout=60
 )
 
-envio = requests.post(
-telegram_url,
-data={
-"chat_id": chat_id,
-"photo": imagem,
-"caption": legenda
-},
-timeout=60
-)
+print("Status Telegram:", r.status_code)
+print(r.text)
 
-print("Status Telegram:", envio.status_code)
-print(envio.text)
-
-if envio.ok:
-print("TESTE DE IMAGEM ENVIADO COM SUCESSO!")
+if r.ok:
+    print("TESTE DE IMAGEM ENVIADO COM SUCESSO!")
 else:
-print("ERRO AO ENVIAR A IMAGEM.")
+    print("ERRO AO ENVIAR A IMAGEM.")
+```
+
+def main():
+nome, link, preco, imagem = buscar()
+enviar(nome, link, preco, imagem)
+
+main()
