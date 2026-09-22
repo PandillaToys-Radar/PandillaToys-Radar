@@ -1,1 +1,853 @@
-[]
+[
+  {
+    "nome": "Carro Miniatura - Fiat Uno 1984 - 50 Anos Fiat - Global",
+    "url": "https://www.rihappy.com.br/carro-miniatura-fiat-uno-1984-50-anos-fiat-global/p",
+    "preco": 24.99,
+    "loja": "Ri Happy",
+    "id": "24719f31b0e96cefb81d1e3f5c1687e7f652afab19321d57d2268a9b6fd12b1f",
+    "metadados": {
+      "categorias": [
+        "carrinhos",
+        "miniaturas"
+      ],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293540+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293540+00:00",
+    "preco_anterior": 24.99
+  },
+  {
+    "nome": "Carro Miniatura - Fiat 147 Gls 1979 - 50 Anos Fiat - Global",
+    "url": "https://www.rihappy.com.br/carro-miniatura-fiat-147-gls-1979-50-anos-fiat-global/p",
+    "preco": 24.99,
+    "loja": "Ri Happy",
+    "id": "9c1a4579da8a31bb6bc7a0efe92465230ee7d396ab2e0a20050c2309dcb1f878",
+    "metadados": {
+      "categorias": [
+        "carrinhos",
+        "miniaturas"
+      ],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293602+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293602+00:00",
+    "preco_anterior": 24.99
+  },
+  {
+    "nome": "Jogo De Cartas - Pokémon - Blister Duplo - Especial 30 Anos - Surpresa - Copag",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-pokemon-blister-duplo-especial-30-anos-surpresa-copag/p",
+    "preco": 99.99,
+    "loja": "Ri Happy",
+    "id": "28f158e930b97129f971c0d3ddc6f8dd82970bf9be957ccb44ebfbf930e796b3",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293652+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293652+00:00",
+    "preco_anterior": 99.99
+  },
+  {
+    "nome": "Carro Miniatura - Fiat Strada Ultra - Global",
+    "url": "https://www.rihappy.com.br/carro-miniatura-fiat-strada-ultra-global/p",
+    "preco": 24.99,
+    "loja": "Ri Happy",
+    "id": "a0633387e51fc3f9af4b5b36734c1548802ad088fe84cb6e5f78866b3205694e",
+    "metadados": {
+      "categorias": [
+        "carrinhos",
+        "miniaturas"
+      ],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293693+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293693+00:00",
+    "preco_anterior": 24.99
+  },
+  {
+    "nome": "Box - Pokémon - Coleção Poster - 30 Anos - Copag",
+    "url": "https://www.rihappy.com.br/box-pokemon-colecao-poster-30-anos-copag/p",
+    "preco": 179.99,
+    "loja": "Ri Happy",
+    "id": "38b5856baa0fcf0fc5a2e4588083a7b89dd00d8588cc8c3ba0ecec29f96b85a6",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293733+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293733+00:00",
+    "preco_anterior": 179.99
+  },
+  {
+    "nome": "Boneca Articulada - Baby Alive - Brincando de Spa Loira - Hasbro",
+    "url": "https://www.rihappy.com.br/boneca-articulada-baby-alive-brincando-de-spa-loira-hasbro/p",
+    "preco": 66.99,
+    "loja": "Ri Happy",
+    "id": "eddabd089a72d216bfbba494663057bb9bc1bae3c546282e10981cc65b7525c6",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "hasbro"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293774+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293774+00:00",
+    "preco_anterior": 66.99
+  },
+  {
+    "nome": "Carrinho com Controle Remoto - Marvel - Homem-Aranha - Autoracing - Candide",
+    "url": "https://www.rihappy.com.br/carrinho-com-controle-remoto-marvel-homemaranha-autoracing-candide/p",
+    "preco": 61.99,
+    "loja": "Ri Happy",
+    "id": "2a21245c202c03a9569f87bb638ecbf7c5001716cdc17ef2cee8270a485a55ef",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [
+        "candide"
+      ],
+      "personagens": [
+        "marvel",
+        "homem-aranha"
+      ]
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293816+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293816+00:00",
+    "preco_anterior": 61.99
+  },
+  {
+    "nome": "Massa de Modelar - Play-Doh - Mini Sorveteria Divertida com 2 Cores de Massinha - Hasbro",
+    "url": "https://www.rihappy.com.br/conjunto-massa-de-molelar---play-doh---mini-sorveteria-divertida-com-2-cores-de-massinha---hasbro/p",
+    "preco": 33.99,
+    "loja": "Ri Happy",
+    "id": "51036822f2dd7b515e32c0985032e5e0c16488dc045998d952a6bab505ce0d04",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "hasbro"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293858+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293858+00:00",
+    "preco_anterior": 33.99
+  },
+  {
+    "nome": "Box - Pokémon - Coleção Fichário  - Especial 30 Anos - Copag",
+    "url": "https://www.rihappy.com.br/box-pokemon-colecao-poster-especial-30-anos-copag/p",
+    "preco": 349.99,
+    "loja": "Ri Happy",
+    "id": "97bafbef98ef5cb22ca87887ccfbec0d9cffbeefa93a0b21a0d322eb91d28983",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293897+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293897+00:00",
+    "preco_anterior": 349.99
+  },
+  {
+    "nome": "Jogo De Cartas - Pokémon - Box - Especial 30 Anos - Sylveon E Greninja - Modelos Sortidos - Copag",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-pokemon-box-especial-30-anos-sylveon-e-greninja-copag/p",
+    "preco": 249.99,
+    "loja": "Ri Happy",
+    "id": "249b88db35ff928314fa947f8c50b7582f8ab9a5a88fc973ef3b97b1bd875279",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293939+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293939+00:00",
+    "preco_anterior": 249.99
+  },
+  {
+    "nome": "Jogo De Cartas - Pokémon - Box Coleção Ilustração - Parceiro Inicial - Serie 02 - Copag",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-pokemon-box-colecao-ilustracao-parceiro-inicial-serie-02-copag/p",
+    "preco": 149.99,
+    "loja": "Ri Happy",
+    "id": "d5698e557ffe8995521f1482aab4f93ae8a872abbce89f0e523916fcb29fd470",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.293981+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.293981+00:00",
+    "preco_anterior": 149.99
+  },
+  {
+    "nome": "Bolinha  - Toy Story - Ri Happy - 12 Modelos - Supresa - Global Products",
+    "url": "https://www.rihappy.com.br/bolinha-toy-story-ri-happy-12-modelos-supresa-global-products/p",
+    "preco": 29.99,
+    "loja": "Ri Happy",
+    "id": "1336df311368e069d7f27b0b89d9103e9ab88c3734324e4ed434fee5d6658c4f",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294041+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294041+00:00",
+    "preco_anterior": 29.99
+  },
+  {
+    "nome": "Boneca Articulada - Emilly Vick - Rosa - Novabrink",
+    "url": "https://www.rihappy.com.br/boneca-articulada-emilly-vick-rosa-novabrink/p",
+    "preco": 80.99,
+    "loja": "Ri Happy",
+    "id": "2ee77351dfddcc1b5108c10572110e2f185598f72d3c605ad977fda2e7168216",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294080+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294080+00:00",
+    "preco_anterior": 80.99
+  },
+  {
+    "nome": "Jogo de Raciocínio Lógico - Jogo Senha - Grow",
+    "url": "https://www.rihappy.com.br/jogo-de-raciocinio-logico-jogo-senha-grow/p",
+    "preco": 56.99,
+    "loja": "Ri Happy",
+    "id": "d230460c20eb2358a98ff23f96a1157ce2653bed138b602f8439a14ecbb423a2",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "grow"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294117+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294117+00:00",
+    "preco_anterior": 56.99
+  },
+  {
+    "nome": "Pista de Percurso - Hot Wheels - T-Rex X - Quartel de Bombeiros - Mattel",
+    "url": "https://www.rihappy.com.br/pista-de-percurso-hot-wheels-trex-x-quartel-de-bombeiros-mattel/p",
+    "preco": 198.99,
+    "loja": "Ri Happy",
+    "id": "5a98b4b25d4b824257df0c60c55a1e80eb99891ac79b917f547847099aea61ee",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294158+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294158+00:00",
+    "preco_anterior": 198.99
+  },
+  {
+    "nome": "LEGO - Minecraft - A Batalha de Lava no Nether - 21266",
+    "url": "https://www.rihappy.com.br/lego-minecraft-a-batalha-de-lava-no-nether-21266/p",
+    "preco": 99.99,
+    "loja": "Ri Happy",
+    "id": "e11f52eb9937a83e0b31f92ac85136658b6dfa4cfb4145b9974b36f504e87f34",
+    "metadados": {
+      "categorias": [
+        "lego",
+        "games"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294197+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294197+00:00",
+    "preco_anterior": 99.99
+  },
+  {
+    "nome": "Boneca - Baby Alive - Minha Melhor Amiga - Sophia Sparkle - Hasbro",
+    "url": "https://www.rihappy.com.br/boneca-baby-alive-minha-melhor-amiga-sophia-sparkle-hasbro/p",
+    "preco": 148.99,
+    "loja": "Ri Happy",
+    "id": "05577c20021f70ac66d1cf4d5c68c5575b598ae70b16f137210cce7d37c44b73",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "hasbro"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294235+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294235+00:00",
+    "preco_anterior": 148.99
+  },
+  {
+    "nome": "Jogo de Ação - Cai Não Cai - Tetris - Estrela",
+    "url": "https://www.rihappy.com.br/jogo-de-acao-cai-nao-cai-tetris-estrela/p",
+    "preco": 39.99,
+    "loja": "Ri Happy",
+    "id": "0a4d3cdcf00fa5b6fc077c8f8847dabb6fed5ee8b4b569750639d9b3aa17ef28",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "estrela"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294304+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294304+00:00",
+    "preco_anterior": 39.99
+  },
+  {
+    "nome": "Carrinho com Controle Remoto - Homem-Aranha - Smart Driver - Candide",
+    "url": "https://www.rihappy.com.br/carrinho-com-controle-remoto-homemaranha-smart-driver-candide/p",
+    "preco": 54.99,
+    "loja": "Ri Happy",
+    "id": "bfe36fd2230c6c8dc3db738a9f4c8acfc90e9e0c19e16a6a8054a9f820a14af5",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [
+        "candide"
+      ],
+      "personagens": [
+        "homem-aranha"
+      ]
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294354+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294354+00:00",
+    "preco_anterior": 54.99
+  },
+  {
+    "nome": "Conjunto de Massa de Modelar - Play-Doh - Smoothies Coloridos - Playset - 5 Potes - Hasbro",
+    "url": "https://www.rihappy.com.br/conjunto-de-massa-de-modelar-playdoh-smoothies-coloridos-playset-5-potes-hasbro/p",
+    "preco": 43.99,
+    "loja": "Ri Happy",
+    "id": "d07b5b0a26572de5bb86ffc6b8da3cf017a38577bf00968538be130f30d77f2a",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "hasbro"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294396+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294396+00:00",
+    "preco_anterior": 43.99
+  },
+  {
+    "nome": "Boneca E Acessórios - Baby Alive - Swimmer - Roxo - Hasbro",
+    "url": "https://www.rihappy.com.br/boneca-e-acessorios-baby-alive-swimmer-roxo-hasbro/p",
+    "preco": 53.99,
+    "loja": "Ri Happy",
+    "id": "511bec4d39f7e1c8ce704ee8047b120ca2255ce77d969800a79175a14182ba8e",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "hasbro"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294434+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294434+00:00",
+    "preco_anterior": 53.99
+  },
+  {
+    "nome": "Jogo de Cartas - UNO - Show 'Em No Mercy - Mattel",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-uno-show-em-no-mercy-mattel/p",
+    "preco": 48.99,
+    "loja": "Ri Happy",
+    "id": "af218a1963547498e86625ffb33540986fe6da643791a538021d68eb8db3b2ad",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294472+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294472+00:00",
+    "preco_anterior": 48.99
+  },
+  {
+    "nome": "Boneca Articulada - Barbie - 65 Histórias Inspiradoras - Safira - Mattel",
+    "url": "https://www.rihappy.com.br/boneca-articulada-barbie-65-historias-inspiradoras-safira-mattel/p",
+    "preco": 122.99,
+    "loja": "Ri Happy",
+    "id": "b87be1a3dff542d017cc9ef74ce935a8c55ed2a274e658243b64d7be351f8428",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294512+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294512+00:00",
+    "preco_anterior": 122.99
+  },
+  {
+    "nome": "LEGO - City Great Vehicles - Monster Truck Azul - 60402",
+    "url": "https://www.rihappy.com.br/lego-city-great-vehicles-monster-truck-azul-60402/p",
+    "preco": 179.99,
+    "loja": "Ri Happy",
+    "id": "dd3050e13b300ea459a630329660dd77832df98896ed56b08ff88120b1fae75b",
+    "metadados": {
+      "categorias": [
+        "lego"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294550+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294550+00:00",
+    "preco_anterior": 179.99
+  },
+  {
+    "nome": "Playset - Barbie - Casa De Bonecas Dos Sonhos - Mattel",
+    "url": "https://www.rihappy.com.br/playset-barbie-casa-de-bonecas-dos-sonhos-mattel/p",
+    "preco": 1299.0,
+    "loja": "Ri Happy",
+    "id": "e3fc3505cf78d123a94fe3a9433ec86a8da41f9cac477659a4c45899a61752e5",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294588+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294588+00:00",
+    "preco_anterior": 1299.0
+  },
+  {
+    "nome": "Jogo Educativo - O Show da Luna - Laboratório Criativo - Nig Brinquedos",
+    "url": "https://www.rihappy.com.br/jogo-educativo-o-show-da-luna-laboratorio-criativo-nig-brinquedos/p",
+    "preco": 70.99,
+    "loja": "Ri Happy",
+    "id": "c275dc5545bd9b22cdf4095834dd0e1a18ef5536ca6294920dd410f4f694e505",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294628+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294628+00:00",
+    "preco_anterior": 70.99
+  },
+  {
+    "nome": "Lego - Lego Creator - Ônibus Espacial - 31134",
+    "url": "https://www.rihappy.com.br/lego-lego-creator-onibus-espacial-31134/p",
+    "preco": 99.99,
+    "loja": "Ri Happy",
+    "id": "c8b416341f9a330a794187477edc9ac00a229b198116f695ad807efb10d3ea72",
+    "metadados": {
+      "categorias": [
+        "lego"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294666+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294666+00:00",
+    "preco_anterior": 99.99
+  },
+  {
+    "nome": "Reboque e Mini Veículo - Hot Wheels - City - Reboque de Dragão - Mattel",
+    "url": "https://www.rihappy.com.br/reboque-e-mini-veiculo-hot-wheels-city-reboque-de-dragao-mattel/p",
+    "preco": 91.99,
+    "loja": "Ri Happy",
+    "id": "e69d290e62e6554cdb2da2c7bd34a029e7284451d2dc5ab14b61ec46df56806e",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294706+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294706+00:00",
+    "preco_anterior": 91.99
+  },
+  {
+    "nome": "Balde Primeiros Blocos - Fisher-Price - 20cm - 10 Blocos",
+    "url": "https://www.rihappy.com.br/balde-primeiros-blocos-fisher-price-20cm-10-blocos/p",
+    "preco": 53.99,
+    "loja": "Ri Happy",
+    "id": "62b9f8716c6c595b588fbf3bb6d922cfc6e0c59c470e31879191f9be4a6a2e16",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294743+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294743+00:00",
+    "preco_anterior": 53.99
+  },
+  {
+    "nome": "Jogo Imagem & Ação Júnior - 448 Peças - Grow",
+    "url": "https://www.rihappy.com.br/jogo-imagem-e-acao-junior-448-pecas-grow/p",
+    "preco": 54.99,
+    "loja": "Ri Happy",
+    "id": "651067fa75f912002b482e15ac8c251cfa33c0ddbf99c390bbb6cf01e6d9978c",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "grow"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294780+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294780+00:00",
+    "preco_anterior": 54.99
+  },
+  {
+    "nome": "Laptop de Atividades - Bilíngue - Barbie - Candide",
+    "url": "https://www.rihappy.com.br/laptop-de-atividades-barbie-bilingue-candide/p",
+    "preco": 69.99,
+    "loja": "Ri Happy",
+    "id": "a2a4a522b97bfd24ec1cfd400d0c0a364ec772d342dd10087b059e10eb23f06d",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "candide"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294817+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294817+00:00",
+    "preco_anterior": 69.99
+  },
+  {
+    "nome": "Girafa com Blocos Fisher-Price",
+    "url": "https://www.rihappy.com.br/girafa-com-blocos-fisher-price-1001807749/p",
+    "preco": 169.95,
+    "loja": "Ri Happy",
+    "id": "9ac3f0c1c49f15d082364f4b80b5c02c3c11a74641bdfb2e889efcd34e254736",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294851+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294851+00:00",
+    "preco_anterior": 169.95
+  },
+  {
+    "nome": "Conjunto Aplicador de Miçangas - Cabelos Estilosos - FanFun",
+    "url": "https://www.rihappy.com.br/conjunto-aplicador-de-micangas-cabelos-estilosos-fanfun/p",
+    "preco": 50.99,
+    "loja": "Ri Happy",
+    "id": "aa9b5007c350a89022d48e0383361bd1e1b3cfa50525aaa6b61cd3185d3a6087",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294889+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294889+00:00",
+    "preco_anterior": 50.99
+  },
+  {
+    "nome": "LEGO Classic - Maleta Criativa - 10713",
+    "url": "https://www.rihappy.com.br/lego-classic-maleta-criativa-10713/p",
+    "preco": 199.99,
+    "loja": "Ri Happy",
+    "id": "d913213151cdbb5e3fa715c3859a4bff9c2ae0bfa52aaab3befe896e14ee7ea4",
+    "metadados": {
+      "categorias": [
+        "lego"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294926+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294926+00:00",
+    "preco_anterior": 199.99
+  },
+  {
+    "nome": "Carrinhos - Hot Wheels - Pacote com 5 Carros - Sortidos - Mattel",
+    "url": "https://www.rihappy.com.br/hot-wheels-pacote-5-carros-flames-mattel/p",
+    "preco": 69.95,
+    "loja": "Ri Happy",
+    "id": "b0c2ee179345975c9814ad4561b3adb9599fcf9fc8c6bbb55aa7e7f2d2b699c9",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.294964+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.294964+00:00",
+    "preco_anterior": 69.95
+  },
+  {
+    "nome": "Jogo Cara a Cara 2018 - Estrela",
+    "url": "https://www.rihappy.com.br/jogo-cara-a-cara-2018-estrela/p",
+    "preco": 89.95,
+    "loja": "Ri Happy",
+    "id": "9adffce07ad408eab58366c0a82f3abdfb8c2640e090af88cdca086726bced09",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "estrela"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295022+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295022+00:00",
+    "preco_anterior": 89.95
+  },
+  {
+    "nome": "Xilofone para Bebês - Fisher-Price - Colorido",
+    "url": "https://www.rihappy.com.br/xilofone-colorido-e-carrinho-fisher-price/p",
+    "preco": 129.95,
+    "loja": "Ri Happy",
+    "id": "b1df09b36d3105d88589422ded7f41cb7c1de7761589c4bf0ddbc613166aa4a3",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295063+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295063+00:00",
+    "preco_anterior": 129.95
+  },
+  {
+    "nome": "Jogo Detetive com App - Estrela",
+    "url": "https://www.rihappy.com.br/jogo-detetive-com-app-estrela-100000084-copy-100110860-/p",
+    "preco": 71.99,
+    "loja": "Ri Happy",
+    "id": "4882b976b3895f74fe1ac6173117107656fff51e825bbae68aa24354cb0af86c",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "estrela"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295099+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295099+00:00",
+    "preco_anterior": 71.99
+  },
+  {
+    "nome": "Blocos Surpresa - Zebra - Fisher-Price",
+    "url": "https://www.rihappy.com.br/blocos-surpresa-zebra-fisher-price-5038884/p",
+    "preco": 85.99,
+    "loja": "Ri Happy",
+    "id": "332f555969249bd674c7b05ad11c93c2f1e003e4b1c81ecea532637c905a756e",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295135+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295135+00:00",
+    "preco_anterior": 85.99
+  },
+  {
+    "nome": "Jogo Eu Sou? - Novas Cartas e App - Estrela",
+    "url": "https://www.rihappy.com.br/jogo-eu-sou-novas-cartas-e-app-estrela/p",
+    "preco": 59.99,
+    "loja": "Ri Happy",
+    "id": "922bb4bddc6909447c15b998a4432f31b68f7498424dc92e41d4330802fdcedd",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "estrela"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295172+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295172+00:00",
+    "preco_anterior": 59.99
+  },
+  {
+    "nome": "Jogo Pula Macaco - Estrela",
+    "url": "https://www.rihappy.com.br/jogo-pula-macaco-estrela-100000085/p",
+    "preco": 44.99,
+    "loja": "Ri Happy",
+    "id": "e29f353c4f4bde7568b0936a8245bc81cc127c577488d75118b355386d7071c6",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "estrela"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295207+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295207+00:00",
+    "preco_anterior": 44.99
+  },
+  {
+    "nome": "Boneca Barbie - Fashion And Beauty – Modelos Sortidos - Mattel",
+    "url": "https://www.rihappy.com.br/boneca-barbie-fashion-and-beauty-modelos-sortidos-mattel/p",
+    "preco": 26.99,
+    "loja": "Ri Happy",
+    "id": "625a277034e9164003ab462e59d8ee8f05fdf6ff23af66ab3b3fd1abf08e9313",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295252+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295252+00:00",
+    "preco_anterior": 26.99
+  },
+  {
+    "nome": "Jogo De Cartas - Pokémon - ME03 - Blister Triplo - Copag",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-pokemon-me03-blister-triplo-copag/p",
+    "preco": 59.99,
+    "loja": "Ri Happy",
+    "id": "b59700435af310a3191901634fa0ab37d63ebab5d5636efef4ef97d9f3cc6762",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295292+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295292+00:00",
+    "preco_anterior": 59.99
+  },
+  {
+    "nome": "Jogo De Ação - Perfil 8 - Grow",
+    "url": "https://www.rihappy.com.br/jogo-de-acao-perfil-8-grow/p",
+    "preco": 149.99,
+    "loja": "Ri Happy",
+    "id": "6d83e2a5363d4b7c922e30ec4d294244f3f131ff777eb165495d9516814235e6",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "grow"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295329+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295329+00:00",
+    "preco_anterior": 149.99
+  },
+  {
+    "nome": "LEGO - Disney - Princesas - Mini Palácio Mágico Da Ariel - 43285",
+    "url": "https://www.rihappy.com.br/lego-disney-princesas-mini-palacio-magico-da-ariel-43285/p",
+    "preco": 199.99,
+    "loja": "Ri Happy",
+    "id": "aca33a1398d90fb5fbe7c5a7bbd302c9ef4f0ea5ea5b0980d5878fd921ac7981",
+    "metadados": {
+      "categorias": [
+        "lego"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": [
+        "disney"
+      ]
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295370+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295370+00:00",
+    "preco_anterior": 199.99
+  },
+  {
+    "nome": "LEGO - Sonic - Sonic: Speedster Lightning - 77117",
+    "url": "https://www.rihappy.com.br/lego-sonic-sonic-speedster-lightning-77117/p",
+    "preco": 99.99,
+    "loja": "Ri Happy",
+    "id": "e1e5c5deedb9803d4f6c705c755cbcb84c8cd50f19bd5bc4c876048647ce6ce8",
+    "metadados": {
+      "categorias": [
+        "lego"
+      ],
+      "marcas": [
+        "lego"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295408+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295408+00:00",
+    "preco_anterior": 99.99
+  },
+  {
+    "nome": "Jogo de Cartas - Uno - Original - Mattel",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-uno-original-mattel/p",
+    "preco": 21.95,
+    "loja": "Ri Happy",
+    "id": "314410bce71fb39de012afcbd687df772ebf1dd278f08c1c006e850119b9ade3",
+    "metadados": {
+      "categorias": [],
+      "marcas": [
+        "mattel"
+      ],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295444+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295444+00:00",
+    "preco_anterior": 21.95
+  },
+  {
+    "nome": "Jogo de Cartas - Pokémon - Box Premium Ex - Copag",
+    "url": "https://www.rihappy.com.br/jogo-de-cartas-pokemon-box-premium-ex-copag/p",
+    "preco": 199.99,
+    "loja": "Ri Happy",
+    "id": "038eadc7ae27e82cf68a80aa440df1f40c13a54951b229a420ce364512a783c7",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295481+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295481+00:00",
+    "preco_anterior": 199.99
+  },
+  {
+    "nome": "Jogo De Ação - Tapalavras - Multikids",
+    "url": "https://www.rihappy.com.br/jogo-de-acao-tapalavras-multikids/p",
+    "preco": 71.99,
+    "loja": "Ri Happy",
+    "id": "a66c2be466aee7d3fd58150a8188c625a4cfedda96aa168ced95576b21771bfb",
+    "metadados": {
+      "categorias": [],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295517+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295517+00:00",
+    "preco_anterior": 71.99
+  },
+  {
+    "nome": "Jogo De Ação - Chave Mágica - Hot Wheels - Elka",
+    "url": "https://www.rihappy.com.br/jogo-de-acao-chave-magica-hot-wheels-elka/p",
+    "preco": 73.99,
+    "loja": "Ri Happy",
+    "id": "3654f512772e87f6bd0f3e503178267bf32c6d5e0f120585bdda8b4418407a80",
+    "metadados": {
+      "categorias": [
+        "carrinhos"
+      ],
+      "marcas": [],
+      "personagens": []
+    },
+    "ultima_verificacao": "2026-09-22T17:54:22.295554+00:00",
+    "primeira_detecao": "2026-09-22T17:54:22.295554+00:00",
+    "preco_anterior": 73.99
+  }
+]
