@@ -5,7 +5,6 @@ import hashlib
 from datetime import datetime, timezone
 
 import requests
-from bs4 import BeautifulSoup
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +19,7 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/139.0 Safari/537.36"
     ),
+    "Accept": "application/json",
     "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8"
 }
 
@@ -48,21 +48,13 @@ def normalizar_texto(texto):
     if not texto:
         return ""
 
-    texto = texto.lower().strip()
+    texto = str(texto).lower().strip()
     texto = re.sub(r"\s+", " ", texto)
 
     return texto
 
 
 def criar_id_produto(nome, url):
-    """
-    Cria um identificador estável para o produto.
-
-    Primeiro usamos a URL.
-    Se a loja mudar pequenos detalhes do nome,
-    o produto continua sendo identificado pela URL.
-    """
-
     base = normalizar_texto(url)
 
     if not base:
@@ -73,29 +65,25 @@ def criar_id_produto(nome, url):
     ).hexdigest()
 
 
-def extrair_preco(texto):
-    """
-    Converte:
-    R$ 299,99 -> 299.99
-    """
-
-    if not texto:
+def extrair_preco(valor):
+    if valor is None:
         return None
 
-    padrao = r"R\$\s*([\d\.]+,\d{2})"
+    if isinstance(valor, (int, float)):
+        return float(valor)
 
-    encontrados = re.findall(padrao, texto)
+    texto = str(valor)
 
-    if not encontrados:
-        return None
+    texto = texto.replace("R$", "")
+    texto = texto.strip()
 
-    valor = encontrados[-1]
-
-    valor = valor.replace(".", "")
-    valor = valor.replace(",", ".")
+    # Formato brasileiro: 1.299,99
+    if "," in texto:
+        texto = texto.replace(".", "")
+        texto = texto.replace(",", ".")
 
     try:
-        return float(valor)
+        return float(texto)
     except ValueError:
         return None
 
@@ -111,49 +99,86 @@ def detectar_metadados(nome, config):
         "action figures": [
             "action figure",
             "figura de ação",
-            "figura articulada"
+            "figura articulada",
+            "boneco articulado"
         ],
+
         "estatuetas": [
             "estátua",
             "estatua",
             "estatueta",
             "statue"
         ],
+
         "carrinhos": [
             "carrinho",
             "carro",
             "hot wheels",
             "matchbox"
         ],
+
         "lego": [
             "lego"
         ],
+
         "pelucias": [
             "pelúcia",
             "pelucia",
             "plush"
         ],
+
         "funko": [
             "funko",
             "pop!"
         ],
+
         "miniaturas": [
             "miniatura",
             "miniaturas"
         ],
+
         "puzzles": [
             "quebra-cabeça",
             "quebra cabeça",
             "puzzle"
         ],
+
         "board games": [
             "jogo de tabuleiro",
             "board game"
+        ],
+
+        "cards": [
+            "card",
+            "cards",
+            "cartas colecionáveis",
+            "tcg"
+        ],
+
+        "anime": [
+            "anime",
+            "manga",
+            "mangá",
+            "naruto",
+            "dragon ball",
+            "one piece"
+        ],
+
+        "games": [
+            "game",
+            "gamer",
+            "playstation",
+            "xbox",
+            "nintendo",
+            "minecraft"
         ]
     }
 
     for categoria, palavras in mapa_categorias.items():
-        if any(palavra in texto for palavra in palavras):
+        if any(
+            palavra in texto
+            for palavra in palavras
+        ):
             categorias.append(categoria)
 
     for marca in config["filtros"]["marcas"]:
@@ -171,98 +196,156 @@ def detectar_metadados(nome, config):
     }
 
 
-def baixar_pagina(url):
-    print(f"Baixando: {url}")
+def buscar_rihappy_api(limite=50):
+    """
+    Busca produtos da Ri Happy através da API pública
+    de catálogo utilizada por lojas VTEX.
 
-    resposta = requests.get(
-        url,
-        headers=HEADERS,
-        timeout=30
+    A busca é feita por páginas de 50 produtos.
+    """
+
+    url = (
+        "https://www.rihappy.com.br/"
+        "api/catalog_system/pub/products/search"
     )
 
-    resposta.raise_for_status()
-
-    return resposta.text
-
-
-def extrair_produtos_rihappy(html, limite=50):
-    """
-    Extrator inicial da Ri Happy.
-
-    A página pública da categoria apresenta os produtos
-    com nome, preço e links.
-    """
-
-    soup = BeautifulSoup(html, "lxml")
-
     produtos = []
-    urls_vistas = set()
 
-    for link in soup.find_all("a", href=True):
+    inicio = 0
+    fim = min(limite - 1, 49)
 
-        href = link.get("href", "").strip()
+    while len(produtos) < limite:
 
-        if not href:
-            continue
+        params = {
+            "_from": inicio,
+            "_to": fim
+        }
 
-        if "/p/" not in href:
-            continue
+        print(
+            f"Consultando API Ri Happy: "
+            f"{inicio}-{fim}"
+        )
 
-        if href.startswith("/"):
-            href = "https://www.rihappy.com.br" + href
+        resposta = requests.get(
+            url,
+            params=params,
+            headers=HEADERS,
+            timeout=30
+        )
 
-        if href in urls_vistas:
-            continue
+        print(
+            f"Status API: {resposta.status_code}"
+        )
 
-        nome = link.get_text(" ", strip=True)
+        resposta.raise_for_status()
 
-        if not nome or len(nome) < 5:
-            continue
+        dados = resposta.json()
 
-        container = link
+        if not isinstance(dados, list):
+            print("Resposta inesperada da API.")
+            break
 
-        texto_container = ""
+        if not dados:
+            break
 
-        for _ in range(4):
-            if container.parent:
-                container = container.parent
-                texto_container = container.get_text(
-                    " ",
-                    strip=True
+        for produto in dados:
+
+            nome = produto.get(
+                "productName"
+            )
+
+            link = produto.get(
+                "link"
+            )
+
+            if not nome or not link:
+                continue
+
+            # A API normalmente já fornece a URL completa.
+            if link.startswith("/"):
+                link = (
+                    "https://www.rihappy.com.br"
+                    + link
                 )
 
-                if "R$" in texto_container:
+            preco = None
+
+            itens = produto.get(
+                "items",
+                []
+            )
+
+            for item in itens:
+
+                sellers = item.get(
+                    "sellers",
+                    []
+                )
+
+                for seller in sellers:
+
+                    oferta = seller.get(
+                        "commertialOffer",
+                        {}
+                    )
+
+                    valor = oferta.get(
+                        "Price"
+                    )
+
+                    if valor is not None:
+                        valor = extrair_preco(
+                            valor
+                        )
+
+                        if valor is not None and valor > 0:
+                            preco = valor
+                            break
+
+                if preco is not None:
                     break
 
-        preco = extrair_preco(texto_container)
+            if preco is None:
+                continue
 
-        if preco is None:
-            continue
+            produtos.append({
+                "nome": nome.strip(),
+                "url": link,
+                "preco": preco,
+                "loja": "Ri Happy"
+            })
 
-        produtos.append({
-            "nome": nome,
-            "url": href,
-            "preco": preco,
-            "loja": "Ri Happy"
-        })
+            if len(produtos) >= limite:
+                break
 
-        urls_vistas.add(href)
-
-        if len(produtos) >= limite:
+        if len(dados) < 50:
             break
+
+        inicio += 50
+        fim = inicio + 49
 
     return produtos
 
 
 def enviar_telegram(mensagem):
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    token = os.environ.get(
+        "TELEGRAM_BOT_TOKEN"
+    )
+
+    chat_id = os.environ.get(
+        "TELEGRAM_CHAT_ID"
+    )
 
     if not token or not chat_id:
-        print("Telegram não configurado.")
+        print(
+            "Telegram não configurado."
+        )
         return
 
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    url = (
+        f"https://api.telegram.org/"
+        f"bot{token}/sendMessage"
+    )
 
     resposta = requests.post(
         url,
@@ -274,39 +357,74 @@ def enviar_telegram(mensagem):
         timeout=30
     )
 
+    print(
+        f"Telegram status: "
+        f"{resposta.status_code}"
+    )
+
     resposta.raise_for_status()
 
 
+def formatar_preco(valor):
+    return (
+        f"R$ {valor:,.2f}"
+        .replace(",", "X")
+        .replace(".", ",")
+        .replace("X", ".")
+    )
+
+
 def formatar_novo_produto(produto):
-    metadados = produto.get("metadados", {})
+
+    metadados = produto.get(
+        "metadados",
+        {}
+    )
 
     categorias = ", ".join(
-        metadados.get("categorias", [])
+        metadados.get(
+            "categorias",
+            []
+        )
     )
 
     marcas = ", ".join(
-        metadados.get("marcas", [])
+        metadados.get(
+            "marcas",
+            []
+        )
     )
 
     personagens = ", ".join(
-        metadados.get("personagens", [])
+        metadados.get(
+            "personagens",
+            []
+        )
     )
 
     mensagem = (
         "🆕 NOVO PRODUTO DETECTADO\n\n"
         f"🧸 {produto['nome']}\n\n"
-        f"💰 R$ {produto['preco']:.2f}".replace(".", ",")
-        + "\n"
+        f"💰 {formatar_preco(produto['preco'])}\n"
     )
 
     if categorias:
-        mensagem += f"🏷️ Categoria: {categorias}\n"
+        mensagem += (
+            f"🏷️ Categoria: "
+            f"{categorias}\n"
+        )
 
     if marcas:
-        mensagem += f"🏢 Marca: {marcas}\n"
+        mensagem += (
+            f"🏢 Marca: "
+            f"{marcas}\n"
+        )
 
     if personagens:
-        mensagem += f"⭐ Personagem: {personagens}\n"
+        mensagem += (
+            f"⭐ Personagem: "
+            f"{personagens}\n"
+        )
 
     mensagem += (
         f"🛒 {produto['loja']}\n\n"
@@ -316,21 +434,36 @@ def formatar_novo_produto(produto):
     return mensagem
 
 
-def formatar_queda_preco(produto, preco_anterior):
-    queda = ((preco_anterior - produto["preco"]) / preco_anterior) * 100
+def formatar_queda_preco(
+    produto,
+    preco_anterior
+):
+
+    queda = (
+        (
+            preco_anterior
+            - produto["preco"]
+        )
+        / preco_anterior
+    ) * 100
 
     return (
         "💰 QUEDA DE PREÇO\n\n"
         f"🧸 {produto['nome']}\n\n"
-        f"~~ R$ {preco_anterior:.2f} ~~\n"
-        f"🔥 R$ {produto['preco']:.2f}\n"
+        f"Antes: {formatar_preco(preco_anterior)}\n"
+        f"Agora: {formatar_preco(produto['preco'])}\n"
         f"📉 -{queda:.1f}%\n\n"
         f"🛒 {produto['loja']}\n"
         f"🔗 {produto['url']}"
-    ).replace(".", ",")
+    )
 
 
-def processar_produtos(produtos, banco, config):
+def processar_produtos(
+    produtos,
+    banco,
+    config
+):
+
     banco_por_id = {
         produto["id"]: produto
         for produto in banco
@@ -341,7 +474,9 @@ def processar_produtos(produtos, banco, config):
 
     percentual_minimo = config[
         "monitoramento"
-    ]["percentual_minimo_queda"]
+    ][
+        "percentual_minimo_queda"
+    ]
 
     for produto in produtos:
 
@@ -350,16 +485,20 @@ def processar_produtos(produtos, banco, config):
             produto["url"]
         )
 
-        produto["metadados"] = detectar_metadados(
-            produto["nome"],
-            config
+        produto["metadados"] = (
+            detectar_metadados(
+                produto["nome"],
+                config
+            )
         )
 
         agora = datetime.now(
             timezone.utc
         ).isoformat()
 
-        produto["ultima_verificacao"] = agora
+        produto[
+            "ultima_verificacao"
+        ] = agora
 
         antigo = banco_por_id.get(
             produto["id"]
@@ -367,11 +506,19 @@ def processar_produtos(produtos, banco, config):
 
         if antigo is None:
 
-            produto["primeira_detecao"] = agora
-            produto["preco_anterior"] = produto["preco"]
+            produto[
+                "primeira_detecao"
+            ] = agora
+
+            produto[
+                "preco_anterior"
+            ] = produto["preco"]
 
             banco.append(produto)
-            banco_por_id[produto["id"]] = produto
+
+            banco_por_id[
+                produto["id"]
+            ] = produto
 
             novos.append(produto)
 
@@ -383,35 +530,70 @@ def processar_produtos(produtos, banco, config):
         )
 
         if (
-            produto["preco"] < preco_anterior
+            produto["preco"]
+            < preco_anterior
             and preco_anterior > 0
         ):
 
             percentual = (
-                (preco_anterior - produto["preco"])
+                (
+                    preco_anterior
+                    - produto["preco"]
+                )
                 / preco_anterior
             ) * 100
 
             if percentual >= percentual_minimo:
+
                 quedas.append(
-                    (produto, preco_anterior)
+                    (
+                        produto,
+                        preco_anterior
+                    )
                 )
 
-        antigo["preco_anterior"] = preco_anterior
-        antigo["preco"] = produto["preco"]
-        antigo["ultima_verificacao"] = agora
-        antigo["nome"] = produto["nome"]
-        antigo["url"] = produto["url"]
-        antigo["metadados"] = produto["metadados"]
+        antigo[
+            "preco_anterior"
+        ] = preco_anterior
+
+        antigo[
+            "preco"
+        ] = produto["preco"]
+
+        antigo[
+            "ultima_verificacao"
+        ] = agora
+
+        antigo[
+            "nome"
+        ] = produto["nome"]
+
+        antigo[
+            "url"
+        ] = produto["url"]
+
+        antigo[
+            "metadados"
+        ] = produto[
+            "metadados"
+        ]
 
     return novos, quedas
 
 
 def main():
 
-    print("================================")
-    print("PANDILLA TOYS RADAR")
-    print("================================")
+    print(
+        "================================"
+    )
+
+    print(
+        "PANDILLA TOYS RADAR"
+    )
+
+    print(
+        "================================"
+    )
 
     config = carregar_json(
         CONFIG_FILE,
@@ -423,25 +605,19 @@ def main():
         []
     )
 
-    fonte = config["fontes"][0]
+    limite = config[
+        "monitoramento"
+    ][
+        "max_produtos_por_fonte"
+    ]
 
-    if not fonte["ativa"]:
-        print("Fonte desativada.")
-        return
-
-    html = baixar_pagina(
-        fonte["url"]
-    )
-
-    produtos = extrair_produtos_rihappy(
-        html,
-        config["monitoramento"][
-            "max_produtos_por_fonte"
-        ]
+    produtos = buscar_rihappy_api(
+        limite
     )
 
     print(
-        f"Produtos encontrados: {len(produtos)}"
+        f"Produtos encontrados: "
+        f"{len(produtos)}"
     )
 
     novos, quedas = processar_produtos(
@@ -455,39 +631,56 @@ def main():
         banco
     )
 
-    print(f"Novos produtos: {len(novos)}")
-    print(f"Quedas de preço: {len(quedas)}")
+    print(
+        f"Novos produtos: "
+        f"{len(novos)}"
+    )
 
-    if config["monitoramento"][
+    print(
+        f"Quedas de preço: "
+        f"{len(quedas)}"
+    )
+
+    if config[
+        "monitoramento"
+    ][
         "enviar_novos_produtos"
     ]:
 
         for produto in novos:
 
-            mensagem = formatar_novo_produto(
-                produto
+            mensagem = (
+                formatar_novo_produto(
+                    produto
+                )
             )
 
             enviar_telegram(
                 mensagem
             )
 
-    if config["monitoramento"][
+    if config[
+        "monitoramento"
+    ][
         "enviar_queda_preco"
     ]:
 
         for produto, preco_anterior in quedas:
 
-            mensagem = formatar_queda_preco(
-                produto,
-                preco_anterior
+            mensagem = (
+                formatar_queda_preco(
+                    produto,
+                    preco_anterior
+                )
             )
 
             enviar_telegram(
                 mensagem
             )
 
-    print("Radar finalizado.")
+    print(
+        "Radar finalizado."
+    )
 
 
 if __name__ == "__main__":
