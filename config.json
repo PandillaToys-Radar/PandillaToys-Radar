@@ -1,0 +1,66 @@
+{
+  "telegram": {
+    "enabled": true
+  },
+
+  "monitoramento": {
+    "max_produtos_por_fonte": 50,
+    "enviar_novos_produtos": true,
+    "enviar_queda_preco": true,
+    "percentual_minimo_queda": 10
+  },
+
+  "filtros": {
+    "categorias": [
+      "brinquedos",
+      "action figures",
+      "estatuetas",
+      "carrinhos",
+      "lego",
+      "anime",
+      "games",
+      "filmes",
+      "series",
+      "pelucias",
+      "cards",
+      "funko",
+      "miniaturas",
+      "mc donalds",
+      "burger king",
+      "puzzles",
+      "board games"
+    ],
+
+    "marcas": [
+      "mattel",
+      "estrela",
+      "grow",
+      "candide",
+      "hasbro",
+      "lego",
+      "funko",
+      "mcfarlane"
+    ],
+
+    "personagens": [
+      "marvel",
+      "dc",
+      "spider-man",
+      "homem-aranha",
+      "batman",
+      "superman",
+      "pokemon",
+      "star wars",
+      "harry potter",
+      "disney"
+    ]
+  },
+
+  "fontes": [
+    {
+      "nome": "Ri Happy",
+      "url": "https://www.rihappy.com.br/brinquedos",
+      "ativa": true
+    }
+  ]
+}
