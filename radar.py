@@ -1,81 +1,36 @@
 import os
 import requests
 
-API = "https://www.rihappy.com.br/api/catalog_system/pub/products/search"
+url = "https://www.rihappy.com.br/api/catalog_system/pub/products/search?_from=0&_to=0"
 
-HEADERS = {
-"User-Agent": "Mozilla/5.0",
-"Accept": "application/json"
-}
+r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
 
-resposta = requests.get(
-API,
-params={"_from": 0, "_to": 0},
-headers=HEADERS,
-timeout=30
-)
+print("STATUS API:", r.status_code)
 
-print("STATUS API:", resposta.status_code)
-
-dados = resposta.json()
+dados = r.json()
 
 produto = dados[0]
 
-nome = produto.get("productName", "Produto sem nome")
-link = produto.get("link", "")
-imagem = None
-preco = None
+nome = produto["productName"]
 
-itens = produto.get("items", [])
+imagem = produto["items"][0]["images"][0]["imageUrl"]
 
-for item in itens:
-imagens = item.get("images", [])
+link = produto["link"]
 
-if imagens:
-    imagem = imagens[0].get("imageUrl")
-
-sellers = item.get("sellers", [])
-
-for seller in sellers:
-    oferta = seller.get("commertialOffer", {})
-    valor = oferta.get("Price")
-
-    if valor:
-        preco = valor
-        break
-
-if preco:
-    break
-
-if link.startswith("/"):
-link = "https://www.rihappy.com.br" + link
+preco = produto["items"][0]["sellers"][0]["commertialOffer"]["Price"]
 
 print("PRODUTO:", nome)
 print("PRECO:", preco)
-print("IMAGEM ENCONTRADA:", bool(imagem))
 print("IMAGEM:", imagem)
 
-token = os.environ.get("TELEGRAM_BOT_TOKEN")
-chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+token = os.environ["TELEGRAM_BOT_TOKEN"]
+chat = os.environ["TELEGRAM_CHAT_ID"]
 
-print("TOKEN ENCONTRADO:", bool(token))
-print("CHAT ID ENCONTRADO:", bool(chat_id))
+api = "https://api.telegram.org/bot" + token + "/sendPhoto"
 
-telegram_url = "https://api.telegram.org/bot" + token + "/sendPhoto"
+dados_telegram = {"chat_id": chat, "photo": imagem, "caption": "TESTE PANDILLA TOYS\n\n" + nome + "\n\nR$ " + str(preco) + "\n\n" + link}
 
-legenda = "TESTE DE IMAGEM - PANDILLA TOYS RADAR\n\n" + nome + "\n\nPreco: R$ " + str(preco) + "\n\n" + link
+resultado = requests.post(api, data=dados_telegram, timeout=60)
 
-resposta_telegram = requests.post(
-telegram_url,
-data={
-"chat_id": chat_id,
-"photo": imagem,
-"caption": legenda
-},
-timeout=60
-)
-
-print("STATUS TELEGRAM:", resposta_telegram.status_code)
-print(resposta_telegram.text)
-
-print("TESTE FINALIZADO.")
+print("STATUS TELEGRAM:", resultado.status_code)
+print(resultado.text)
