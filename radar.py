@@ -73,11 +73,8 @@ def extrair_preco(valor):
         return float(valor)
 
     texto = str(valor)
+    texto = texto.replace("R$", "").strip()
 
-    texto = texto.replace("R$", "")
-    texto = texto.strip()
-
-    # Formato brasileiro: 1.299,99
     if "," in texto:
         texto = texto.replace(".", "")
         texto = texto.replace(",", ".")
@@ -197,12 +194,6 @@ def detectar_metadados(nome, config):
 
 
 def buscar_rihappy_api(limite=50):
-    """
-    Busca produtos da Ri Happy através da API pública
-    de catálogo utilizada por lojas VTEX.
-
-    A busca é feita por páginas de 50 produtos.
-    """
 
     url = (
         "https://www.rihappy.com.br/"
@@ -250,18 +241,12 @@ def buscar_rihappy_api(limite=50):
 
         for produto in dados:
 
-            nome = produto.get(
-                "productName"
-            )
-
-            link = produto.get(
-                "link"
-            )
+            nome = produto.get("productName")
+            link = produto.get("link")
 
             if not nome or not link:
                 continue
 
-            # A API normalmente já fornece a URL completa.
             if link.startswith("/"):
                 link = (
                     "https://www.rihappy.com.br"
@@ -269,6 +254,7 @@ def buscar_rihappy_api(limite=50):
                 )
 
             preco = None
+            imagem = None
 
             itens = produto.get(
                 "items",
@@ -276,6 +262,32 @@ def buscar_rihappy_api(limite=50):
             )
 
             for item in itens:
+
+                # =========================
+                # IMAGEM
+                # =========================
+
+                imagens = item.get(
+                    "images",
+                    []
+                )
+
+                if imagens and imagem is None:
+
+                    primeira_imagem = imagens[0]
+
+                    imagem = (
+                        primeira_imagem.get(
+                            "imageUrl"
+                        )
+                        or primeira_imagem.get(
+                            "imageText"
+                        )
+                    )
+
+                # =========================
+                # PREÇO
+                # =========================
 
                 sellers = item.get(
                     "sellers",
@@ -294,11 +306,15 @@ def buscar_rihappy_api(limite=50):
                     )
 
                     if valor is not None:
+
                         valor = extrair_preco(
                             valor
                         )
 
-                        if valor is not None and valor > 0:
+                        if (
+                            valor is not None
+                            and valor > 0
+                        ):
                             preco = valor
                             break
 
@@ -312,6 +328,7 @@ def buscar_rihappy_api(limite=50):
                 "nome": nome.strip(),
                 "url": link,
                 "preco": preco,
+                "imagem": imagem,
                 "loja": "Ri Happy"
             })
 
@@ -327,7 +344,8 @@ def buscar_rihappy_api(limite=50):
     return produtos
 
 
-def enviar_telegram(mensagem):
+def enviar_telegram_texto(mensagem):
+
     token = os.environ.get(
         "TELEGRAM_BOT_TOKEN"
     )
@@ -337,9 +355,11 @@ def enviar_telegram(mensagem):
     )
 
     if not token or not chat_id:
+
         print(
             "Telegram não configurado."
         )
+
         return
 
     url = (
@@ -358,14 +378,89 @@ def enviar_telegram(mensagem):
     )
 
     print(
-        f"Telegram status: "
+        f"Telegram texto: "
         f"{resposta.status_code}"
     )
 
     resposta.raise_for_status()
 
 
+def enviar_telegram_foto(
+    imagem,
+    legenda
+):
+
+    token = os.environ.get(
+        "TELEGRAM_BOT_TOKEN"
+    )
+
+    chat_id = os.environ.get(
+        "TELEGRAM_CHAT_ID"
+    )
+
+    if not token or not chat_id:
+
+        print(
+            "Telegram não configurado."
+        )
+
+        return
+
+    if not imagem:
+
+        print(
+            "Produto sem imagem. "
+            "Enviando apenas texto."
+        )
+
+        enviar_telegram_texto(
+            legenda
+        )
+
+        return
+
+    url = (
+        f"https://api.telegram.org/"
+        f"bot{token}/sendPhoto"
+    )
+
+    resposta = requests.post(
+        url,
+        data={
+            "chat_id": chat_id,
+            "photo": imagem,
+            "caption": legenda
+        },
+        timeout=30
+    )
+
+    print(
+        f"Telegram foto: "
+        f"{resposta.status_code}"
+    )
+
+    # Se a imagem falhar, não perdemos o alerta.
+    if not resposta.ok:
+
+        print(
+            "Falha ao enviar imagem."
+        )
+
+        print(
+            resposta.text
+        )
+
+        enviar_telegram_texto(
+            legenda
+        )
+
+        return
+
+    resposta.raise_for_status()
+
+
 def formatar_preco(valor):
+
     return (
         f"R$ {valor:,.2f}"
         .replace(",", "X")
@@ -409,18 +504,21 @@ def formatar_novo_produto(produto):
     )
 
     if categorias:
+
         mensagem += (
             f"🏷️ Categoria: "
             f"{categorias}\n"
         )
 
     if marcas:
+
         mensagem += (
             f"🏢 Marca: "
             f"{marcas}\n"
         )
 
     if personagens:
+
         mensagem += (
             f"⭐ Personagem: "
             f"{personagens}\n"
@@ -450,8 +548,10 @@ def formatar_queda_preco(
     return (
         "💰 QUEDA DE PREÇO\n\n"
         f"🧸 {produto['nome']}\n\n"
-        f"Antes: {formatar_preco(preco_anterior)}\n"
-        f"Agora: {formatar_preco(produto['preco'])}\n"
+        f"Antes: "
+        f"{formatar_preco(preco_anterior)}\n"
+        f"Agora: "
+        f"{formatar_preco(produto['preco'])}\n"
         f"📉 -{queda:.1f}%\n\n"
         f"🛒 {produto['loja']}\n"
         f"🔗 {produto['url']}"
@@ -552,6 +652,13 @@ def processar_produtos(
                     )
                 )
 
+        # Atualiza imagem se encontrarmos uma nova.
+        if produto.get("imagem"):
+
+            antigo[
+                "imagem"
+            ] = produto["imagem"]
+
         antigo[
             "preco_anterior"
         ] = preco_anterior
@@ -574,9 +681,7 @@ def processar_produtos(
 
         antigo[
             "metadados"
-        ] = produto[
-            "metadados"
-        ]
+        ] = produto["metadados"]
 
     return novos, quedas
 
@@ -620,6 +725,17 @@ def main():
         f"{len(produtos)}"
     )
 
+    com_imagem = sum(
+        1
+        for produto in produtos
+        if produto.get("imagem")
+    )
+
+    print(
+        f"Produtos com imagem: "
+        f"{com_imagem}"
+    )
+
     novos, quedas = processar_produtos(
         produtos,
         banco,
@@ -655,7 +771,8 @@ def main():
                 )
             )
 
-            enviar_telegram(
+            enviar_telegram_foto(
+                produto.get("imagem"),
                 mensagem
             )
 
@@ -674,7 +791,8 @@ def main():
                 )
             )
 
-            enviar_telegram(
+            enviar_telegram_foto(
+                produto.get("imagem"),
                 mensagem
             )
 
