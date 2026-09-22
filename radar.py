@@ -8,86 +8,74 @@ HEADERS = {
 "Accept": "application/json"
 }
 
-def buscar():
-r = requests.get(API, params={"_from": 0, "_to": 0}, headers=HEADERS, timeout=30)
-print("Status API:", r.status_code)
-r.raise_for_status()
-dados = r.json()
+resposta = requests.get(
+API,
+params={"_from": 0, "_to": 0},
+headers=HEADERS,
+timeout=30
+)
+
+print("STATUS API:", resposta.status_code)
+
+dados = resposta.json()
+
 produto = dados[0]
+
 nome = produto.get("productName", "Produto sem nome")
 link = produto.get("link", "")
 imagem = None
 preco = None
 
-```
-for item in produto.get("items", []):
-    imagens = item.get("images", [])
-    if imagens:
-        imagem = imagens[0].get("imageUrl") or imagens[0].get("imageText")
+itens = produto.get("items", [])
 
-    sellers = item.get("sellers", [])
-    for seller in sellers:
-        oferta = seller.get("commertialOffer", {})
-        preco = oferta.get("Price")
-        if preco:
-            break
+for item in itens:
+imagens = item.get("images", [])
 
-    if preco:
+if imagens:
+    imagem = imagens[0].get("imageUrl")
+
+sellers = item.get("sellers", [])
+
+for seller in sellers:
+    oferta = seller.get("commertialOffer", {})
+    valor = oferta.get("Price")
+
+    if valor:
+        preco = valor
         break
 
+if preco:
+    break
+
 if link.startswith("/"):
-    link = "https://www.rihappy.com.br" + link
+link = "https://www.rihappy.com.br" + link
 
-return nome, link, preco, imagem
-```
+print("PRODUTO:", nome)
+print("PRECO:", preco)
+print("IMAGEM ENCONTRADA:", bool(imagem))
+print("IMAGEM:", imagem)
 
-def enviar(nome, link, preco, imagem):
 token = os.environ.get("TELEGRAM_BOT_TOKEN")
 chat_id = os.environ.get("TELEGRAM_CHAT_ID")
 
-```
-print("Produto:", nome)
-print("Preço:", preco)
-print("Imagem encontrada:", bool(imagem))
-print("Imagem:", imagem)
+print("TOKEN ENCONTRADO:", bool(token))
+print("CHAT ID ENCONTRADO:", bool(chat_id))
 
-if not token:
-    print("ERRO: token do Telegram não encontrado.")
-    return
-
-if not chat_id:
-    print("ERRO: chat ID do Telegram não encontrado.")
-    return
-
-if not imagem:
-    print("ERRO: imagem não encontrada.")
-    return
-
-telegram = "https://api.telegram.org/bot" + token + "/sendPhoto"
+telegram_url = "https://api.telegram.org/bot" + token + "/sendPhoto"
 
 legenda = "TESTE DE IMAGEM - PANDILLA TOYS RADAR\n\n" + nome + "\n\nPreco: R$ " + str(preco) + "\n\n" + link
 
-r = requests.post(
-    telegram,
-    data={
-        "chat_id": chat_id,
-        "photo": imagem,
-        "caption": legenda
-    },
-    timeout=60
+resposta_telegram = requests.post(
+telegram_url,
+data={
+"chat_id": chat_id,
+"photo": imagem,
+"caption": legenda
+},
+timeout=60
 )
 
-print("Status Telegram:", r.status_code)
-print(r.text)
+print("STATUS TELEGRAM:", resposta_telegram.status_code)
+print(resposta_telegram.text)
 
-if r.ok:
-    print("TESTE DE IMAGEM ENVIADO COM SUCESSO!")
-else:
-    print("ERRO AO ENVIAR A IMAGEM.")
-```
-
-def main():
-nome, link, preco, imagem = buscar()
-enviar(nome, link, preco, imagem)
-
-main()
+print("TESTE FINALIZADO.")
